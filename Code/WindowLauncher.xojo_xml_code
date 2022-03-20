@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r2.1" FormatVersion="2" MinIDEVersion="20070100">
+  <block type="Window" ID="1787688959">
+    <ObjName>WindowLauncher</ObjName>
+    <ObjContainerID>0</ObjContainerID>
+    <IsClass>1</IsClass>
+    <Superclass>Window</Superclass>
+    <ItemFlags>1</ItemFlags>
+    <IsInterface>0</IsInterface>
+    <Compatibility/>
+    <HookInstance>
+      <ItemName>Open</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>1896833023</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Sub Open()</SourceLine>
+        <SourceLine>self.Title = self.json.Value( "name" )</SourceLine>
+        <SourceLine/>
+        <SourceLine>var windowRestoreJSON as JSONItem = JSONFiles.load( Globals.getLocalConfigFile( self.Title ) )</SourceLine>
+        <SourceLine/>
+        <SourceLine>if windowRestoreJSON.HasName( "window_Left" ) then</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.Left = windowRestoreJSON.Lookup( "window_Left", self.Left )</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.Top = windowRestoreJSON.Lookup( "window_Top", self.Top )</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.Width = windowRestoreJSON.Lookup( "window_Width", self.Width )</SourceLine>
+        <SourceLine/>
+        <SourceLine>end if</SourceLine>
+        <SourceLine/>
+        <SourceLine>var items as JSONItem = self.json.Value( "items" )</SourceLine>
+        <SourceLine/>
+        <SourceLine>for i as Integer = 0 to items.Count() - 1</SourceLine>
+        <SourceLine/>
+        <SourceLine>var item as JSONItem = items.ChildAt( i )</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.addButton( item )</SourceLine>
+        <SourceLine/>
+        <SourceLine>next</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.json = nil</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.MaximumHeight = self.Height</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.MinimumHeight = self.Height</SourceLine>
+        <SourceLine/>
+        <SourceLine>End Sub</SourceLine>
+      </ItemSource>
+    </HookInstance>
+    <HookInstance>
+      <ItemName>Close</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>1686845439</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Sub Close()</SourceLine>
+        <SourceLine>var windowRestoreJSON as JSONItem = new JSONItem( JSONUtilities.kEmptyObject )</SourceLine>
+        <SourceLine/>
+        <SourceLine>windowRestoreJSON.Value( "window_Left" ) = self.Left</SourceLine>
+        <SourceLine/>
+        <SourceLine>windowRestoreJSON.Value( "window_Top" ) = self.Top</SourceLine>
+        <SourceLine/>
+        <SourceLine>windowRestoreJSON.Value( "window_Width" ) = self.Width</SourceLine>
+        <SourceLine/>
+        <SourceLine>JSONFiles.save( Globals.getLocalConfigFile( self.Title ), windowRestoreJSON )</SourceLine>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine>// if self.quitOnClose then Quit()</SourceLine>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine>End Sub</SourceLine>
+      </ItemSource>
+    </HookInstance>
+    <Method>
+      <ItemName>addButton</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>535863295</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Sub addButton(json as JSONItem)</SourceLine>
+        <SourceLine>var button as ContainerControlButton = new ContainerControlButton( json )</SourceLine>
+        <SourceLine/>
+        <SourceLine>var top as Integer = self.buttons.Count * button.Height</SourceLine>
+        <SourceLine/>
+        <SourceLine>button.EmbedWithin( self, 0, top, self.Width, button.Height )</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.buttons.AddRow( button )</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.Height = self.buttons.Count * button.Height</SourceLine>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine>End Sub</SourceLine>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <AliasName/>
+      <ItemFlags>33</ItemFlags>
+      <IsShared>0</IsShared>
+      <ItemParams>json as JSONItem</ItemParams>
+      <ItemResult/>
+    </Method>
+    <Method>
+      <ItemName>Constructor</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>975906815</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Sub Constructor(json as JSONItem, quitOnClose as Boolean = false)</SourceLine>
+        <SourceLine>self.json = json</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.quitOnClose = quitOnClose</SourceLine>
+        <SourceLine/>
+        <SourceLine>super.Constructor()</SourceLine>
+        <SourceLine/>
+        <SourceLine>End Sub</SourceLine>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <AliasName/>
+      <ItemFlags>0</ItemFlags>
+      <IsShared>0</IsShared>
+      <ItemParams>json as JSONItem, quitOnClose as Boolean = false</ItemParams>
+      <ItemResult/>
+    </Method>
+    <Method>
+      <ItemName>matches</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>498182143</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Function matches(json as JSONItem) As Boolean</SourceLine>
+        <SourceLine>return json.Value( "name" ) = self.Title</SourceLine>
+        <SourceLine/>
+        <SourceLine>End Function</SourceLine>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <AliasName/>
+      <ItemFlags>0</ItemFlags>
+      <IsShared>0</IsShared>
+      <ItemParams>json as JSONItem</ItemParams>
+      <ItemResult>Boolean</ItemResult>
+    </Method>
+    <Property>
+      <ItemName>buttons()</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>663300095</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>buttons() As ContainerControlButton</SourceLine>
+        <SourceLine/>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <ItemDeclaration>buttons() As ContainerControlButton</ItemDeclaration>
+      <ItemFlags>33</ItemFlags>
+      <IsShared>0</IsShared>
+    </Property>
+    <Property>
+      <ItemName>json</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>369031167</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>json As JSONItem</SourceLine>
+        <SourceLine/>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <ItemDeclaration>json As JSONItem</ItemDeclaration>
+      <ItemFlags>33</ItemFlags>
+      <IsShared>0</IsShared>
+    </Property>
+    <Property>
+      <ItemName>quitOnClose</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>1000740863</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>quitOnClose As Boolean</SourceLine>
+        <SourceLine/>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <ItemDeclaration>quitOnClose As Boolean</ItemDeclaration>
+      <ItemFlags>33</ItemFlags>
+      <IsShared>0</IsShared>
+    </Property>
+    <PropertyVal Name="MenuBarVisible">True</PropertyVal>
+    <PropertyVal Name="MenuBar">1177307135</PropertyVal>
+    <PropertyVal Name="Backdrop">0</PropertyVal>
+    <PropertyVal Name="BackgroundColor">16777215</PropertyVal>
+    <PropertyVal Name="HasBackgroundColor">False</PropertyVal>
+    <PropertyVal Name="Visible">True</PropertyVal>
+    <PropertyVal Name="DefaultLocation">2</PropertyVal>
+    <PropertyVal Name="ImplicitInstance">False</PropertyVal>
+    <PropertyVal Name="FullScreen">False</PropertyVal>
+    <PropertyVal Name="MacProcID">0</PropertyVal>
+    <PropertyVal Name="Composite">False</PropertyVal>
+    <PropertyVal Name="Resizeable">True</PropertyVal>
+    <PropertyVal Name="HasFullScreenButton">False</PropertyVal>
+    <PropertyVal Name="HasMinimizeButton">False</PropertyVal>
+    <PropertyVal Name="HasMaximizeButton">False</PropertyVal>
+    <PropertyVal Name="HasCloseButton">True</PropertyVal>
+    <PropertyVal Name="Title">Launcher</PropertyVal>
+    <PropertyVal Name="Type">7</PropertyVal>
+    <PropertyVal Name="MaximumHeight">32000</PropertyVal>
+    <PropertyVal Name="MaximumWidth">32000</PropertyVal>
+    <PropertyVal Name="MinimumHeight">64</PropertyVal>
+    <PropertyVal Name="MinimumWidth">64</PropertyVal>
+    <PropertyVal Name="Height">386</PropertyVal>
+    <PropertyVal Name="Width">330</PropertyVal>
+    <ViewBehavior>
+      <ViewProperty>
+        <ObjName>Name</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>ID</PropertyGroup>
+        <ItemType>String</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Interfaces</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>ID</PropertyGroup>
+        <ItemType>String</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Super</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>ID</PropertyGroup>
+        <ItemType>String</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Width</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Size</PropertyGroup>
+        <PropertyValue>600</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Height</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Size</PropertyGroup>
+        <PropertyValue>400</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MinimumWidth</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Size</PropertyGroup>
+        <PropertyValue>64</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MinimumHeight</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Size</PropertyGroup>
+        <PropertyValue>64</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MaximumWidth</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Size</PropertyGroup>
+        <PropertyValue>32000</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MaximumHeight</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Size</PropertyGroup>
+        <PropertyValue>32000</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Type</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>0</PropertyValue>
+        <ItemType>Types</ItemType>
+        <EditorType>Enum</EditorType>
+        <Enumeration>
+          <ItemDef>0 - Document</ItemDef>
+          <ItemDef>1 - Movable Modal</ItemDef>
+          <ItemDef>2 - Modal Dialog</ItemDef>
+          <ItemDef>3 - Floating Window</ItemDef>
+          <ItemDef>4 - Plain Box</ItemDef>
+          <ItemDef>5 - Shadowed Box</ItemDef>
+          <ItemDef>6 - Rounded Window</ItemDef>
+          <ItemDef>7 - Global Floating Window</ItemDef>
+          <ItemDef>8 - Sheet Window</ItemDef>
+          <ItemDef>9 - Metal Window</ItemDef>
+          <ItemDef>11 - Modeless Dialog</ItemDef>
+        </Enumeration>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Title</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>Untitled</PropertyValue>
+        <ItemType>String</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>HasCloseButton</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>HasMaximizeButton</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>HasMinimizeButton</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>HasFullScreenButton</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>False</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Resizeable</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Frame</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Composite</ObjName>
+        <PropertyGroup>OS X (Carbon)</PropertyGroup>
+        <PropertyValue>False</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MacProcID</ObjName>
+        <PropertyGroup>OS X (Carbon)</PropertyGroup>
+        <PropertyValue>0</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>FullScreen</ObjName>
+        <PropertyGroup>Behavior</PropertyGroup>
+        <PropertyValue>False</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>ImplicitInstance</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Behavior</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>DefaultLocation</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Behavior</PropertyGroup>
+        <PropertyValue>0</PropertyValue>
+        <ItemType>Locations</ItemType>
+        <EditorType>Enum</EditorType>
+        <Enumeration>
+          <ItemDef>0 - Default</ItemDef>
+          <ItemDef>1 - Parent Window</ItemDef>
+          <ItemDef>2 - Main Screen</ItemDef>
+          <ItemDef>3 - Parent Window Screen</ItemDef>
+          <ItemDef>4 - Stagger</ItemDef>
+        </Enumeration>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Visible</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Behavior</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>HasBackgroundColor</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Background</PropertyGroup>
+        <PropertyValue>False</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>BackgroundColor</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Background</PropertyGroup>
+        <PropertyValue>&amp;hFFFFFF</PropertyValue>
+        <ItemType>Color</ItemType>
+        <EditorType>Color</EditorType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Backdrop</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Background</PropertyGroup>
+        <ItemType>Picture</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MenuBar</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Menus</PropertyGroup>
+        <ItemType>MenuBar</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>MenuBarVisible</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Deprecated</PropertyGroup>
+        <PropertyValue>True</PropertyValue>
+        <ItemType>Boolean</ItemType>
+      </ViewProperty>
+    </ViewBehavior>
+  </block>
+</RBProject>

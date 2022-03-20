@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r2.1" FormatVersion="2" MinIDEVersion="20070100">
+  <block type="Module" ID="249024511">
+    <ObjName>JSONFiles</ObjName>
+    <ObjContainerID>0</ObjContainerID>
+    <IsClass>0</IsClass>
+    <ItemFlags>1</ItemFlags>
+    <IsInterface>0</IsInterface>
+    <Compatibility/>
+    <Method>
+      <ItemName>load</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>40011775</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Function load(f as FolderItem) As JSONItem</SourceLine>
+        <SourceLine>var json as JSONItem = nil</SourceLine>
+        <SourceLine/>
+        <SourceLine>var data as String = TextFiles.load( f )</SourceLine>
+        <SourceLine/>
+        <SourceLine>json = new JSONItem( data )</SourceLine>
+        <SourceLine/>
+        <SourceLine>return json</SourceLine>
+        <SourceLine/>
+        <SourceLine>End Function</SourceLine>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <AliasName/>
+      <ItemFlags>1</ItemFlags>
+      <IsShared>0</IsShared>
+      <ItemParams>f as FolderItem</ItemParams>
+      <ItemResult>JSONItem</ItemResult>
+    </Method>
+    <Method>
+      <ItemName>save</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>578824191</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Sub save(f as FolderItem, json as JSONItem)</SourceLine>
+        <SourceLine>var data as String = json.ToString</SourceLine>
+        <SourceLine/>
+        <SourceLine>TextFiles.save( f, data )</SourceLine>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine>// var json as JSONItem = new JSONItem( "{}" )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// json.Value( "window_Left" ) = Main.window_Left</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// json.Value( "window_Top" ) = Main.window_Top</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// var fTemp as FolderItem = SpecialFolder.ApplicationData.Child( "com.charlierobin.launcher" ).Child( "com.charlierobin.launcher." + Main.title + "-" + UUID.generate() + ".json" )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// try</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// var output as TextOutputStream = TextOutputStream.Create( fTemp )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// output.Write( ConvertEncoding( json.ToString, Encodings.UTF8 ) )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// output.Close()</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// var f as FolderItem = SpecialFolder.ApplicationData.Child( "com.charlierobin.launcher" ).Child( "com.charlierobin.launcher." + Main.title + ".json" )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// if f.Exists then f.Remove()</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// fTemp.Name = f.Name</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// catch e as IOException</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// MessageBox( "Error writing: " + e.Message )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// catch e as RuntimeException</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// MessageBox( "Error writing: " + e.Message )</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine>// end try</SourceLine>
+        <SourceLine>// </SourceLine>
+        <SourceLine/>
+        <SourceLine>End Sub</SourceLine>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <AliasName/>
+      <ItemFlags>1</ItemFlags>
+      <IsShared>0</IsShared>
+      <ItemParams>f as FolderItem, json as JSONItem</ItemParams>
+      <ItemResult/>
+    </Method>
+    <Method>
+      <ItemName>safeSave</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>1626968063</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>Sub safeSave(f as FolderItem, json as JSONItem)</SourceLine>
+        <SourceLine>var data as String = json.ToString</SourceLine>
+        <SourceLine/>
+        <SourceLine>TextFiles.safeSave( f, data )</SourceLine>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine/>
+        <SourceLine>End Sub</SourceLine>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <AliasName/>
+      <ItemFlags>1</ItemFlags>
+      <IsShared>0</IsShared>
+      <ItemParams>f as FolderItem, json as JSONItem</ItemParams>
+      <ItemResult/>
+    </Method>
+    <ViewBehavior>
+      <ViewProperty>
+        <ObjName>Name</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>ID</PropertyGroup>
+        <ItemType>String</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Index</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>ID</PropertyGroup>
+        <PropertyValue>-2147483648</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Super</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>ID</PropertyGroup>
+        <ItemType>String</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Left</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Position</PropertyGroup>
+        <PropertyValue>0</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+      <ViewProperty>
+        <ObjName>Top</ObjName>
+        <Visible>1</Visible>
+        <PropertyGroup>Position</PropertyGroup>
+        <PropertyValue>0</PropertyValue>
+        <ItemType>Integer</ItemType>
+      </ViewProperty>
+    </ViewBehavior>
+  </block>
+</RBProject>
