@@ -11,7 +11,7 @@
       <ItemName>emptyObject</ItemName>
       <Compatibility/>
       <Visible>1</Visible>
-      <PartID>625915903</PartID>
+      <PartID>718231551</PartID>
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
         <SourceLine>Function emptyObject() As JSONItem</SourceLine>
@@ -30,7 +30,7 @@
       <ItemName>emptyArray</ItemName>
       <Compatibility/>
       <Visible>1</Visible>
-      <PartID>1362208767</PartID>
+      <PartID>1158365183</PartID>
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
         <SourceLine>Function emptyArray() As JSONItem</SourceLine>
