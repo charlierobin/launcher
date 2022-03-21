@@ -51,10 +51,12 @@
       <PartID>636325887</PartID>
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
-        <SourceLine>Function load(f as FolderItem) As String</SourceLine>
-        <SourceLine>var data as String = ""</SourceLine>
+        <SourceLine>Function load(f as FolderItem, data as String = "") As String</SourceLine>
+        <SourceLine>#pragma BreakOnExceptions false</SourceLine>
         <SourceLine/>
         <SourceLine>try</SourceLine>
+        <SourceLine/>
+        <SourceLine>if f.Exists then</SourceLine>
         <SourceLine/>
         <SourceLine>var t as TextInputStream = TextInputStream.Open( f )</SourceLine>
         <SourceLine/>
@@ -64,13 +66,23 @@
         <SourceLine/>
         <SourceLine>t.Close()</SourceLine>
         <SourceLine/>
-        <SourceLine>catch e as IOException</SourceLine>
+        <SourceLine>else</SourceLine>
         <SourceLine/>
-        <SourceLine>System.DebugLog( "Error reading file: " + f.Name + " " + e.Message )</SourceLine>
+        <SourceLine>#if DebugBuild then</SourceLine>
+        <SourceLine/>
+        <SourceLine>System.DebugLog( "Using default data for: " + f.Name )</SourceLine>
+        <SourceLine/>
+        <SourceLine>#endif</SourceLine>
+        <SourceLine/>
+        <SourceLine>end if</SourceLine>
         <SourceLine/>
         <SourceLine>catch e as RuntimeException</SourceLine>
         <SourceLine/>
-        <SourceLine>System.DebugLog( "Error reading file: " + f.Name + " " + e.Message )</SourceLine>
+        <SourceLine>#if DebugBuild then</SourceLine>
+        <SourceLine/>
+        <SourceLine>System.DebugLog( "Error for file: " + f.Name + if ( e.Message &lt;&gt; "", ", " + e.Message, "" ) )</SourceLine>
+        <SourceLine/>
+        <SourceLine>#endif</SourceLine>
         <SourceLine/>
         <SourceLine>end try</SourceLine>
         <SourceLine/>
@@ -82,7 +94,7 @@
       <AliasName/>
       <ItemFlags>1</ItemFlags>
       <IsShared>0</IsShared>
-      <ItemParams>f as FolderItem</ItemParams>
+      <ItemParams>f as FolderItem, data as String = ""</ItemParams>
       <ItemResult>String</ItemResult>
     </Method>
     <Method>

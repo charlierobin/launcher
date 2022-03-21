@@ -14,14 +14,45 @@
       <PartID>40011775</PartID>
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
-        <SourceLine>Function load(f as FolderItem) As JSONItem</SourceLine>
-        <SourceLine>var json as JSONItem = nil</SourceLine>
+        <SourceLine>Function load(f as FolderItem, default as JSONItem = nil) As JSONItem</SourceLine>
+        <SourceLine>#pragma BreakOnExceptions false</SourceLine>
         <SourceLine/>
         <SourceLine>var data as String = TextFiles.load( f )</SourceLine>
         <SourceLine/>
+        <SourceLine>if data = "" then</SourceLine>
+        <SourceLine/>
+        <SourceLine>return default</SourceLine>
+        <SourceLine/>
+        <SourceLine>else</SourceLine>
+        <SourceLine/>
+        <SourceLine>var json as JSONItem = nil</SourceLine>
+        <SourceLine/>
+        <SourceLine>try</SourceLine>
+        <SourceLine/>
         <SourceLine>json = new JSONItem( data )</SourceLine>
         <SourceLine/>
+        <SourceLine>catch e as RuntimeException</SourceLine>
+        <SourceLine/>
+        <SourceLine>#if DebugBuild then</SourceLine>
+        <SourceLine/>
+        <SourceLine>System.DebugLog( f.Name + ": " + if ( e.Message &lt;&gt; "", e.Message, "error" ) )</SourceLine>
+        <SourceLine/>
+        <SourceLine>#endif</SourceLine>
+        <SourceLine/>
+        <SourceLine>end try</SourceLine>
+        <SourceLine/>
+        <SourceLine>if json is nil then</SourceLine>
+        <SourceLine/>
+        <SourceLine>return default</SourceLine>
+        <SourceLine/>
+        <SourceLine>else</SourceLine>
+        <SourceLine/>
         <SourceLine>return json</SourceLine>
+        <SourceLine/>
+        <SourceLine>end if</SourceLine>
+        <SourceLine/>
+        <SourceLine>end if</SourceLine>
+        <SourceLine/>
         <SourceLine/>
         <SourceLine>End Function</SourceLine>
       </ItemSource>
@@ -29,7 +60,7 @@
       <AliasName/>
       <ItemFlags>1</ItemFlags>
       <IsShared>0</IsShared>
-      <ItemParams>f as FolderItem</ItemParams>
+      <ItemParams>f as FolderItem, default as JSONItem = nil</ItemParams>
       <ItemResult>JSONItem</ItemResult>
     </Method>
     <Method>

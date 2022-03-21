@@ -34,7 +34,7 @@
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
         <SourceLine>Function getLocalConfigFile(name as String) As FolderItem</SourceLine>
-        <SourceLine>return getAppDataFolder().Child( "com.charlierobin.launcher." + name + ".json" )</SourceLine>
+        <SourceLine>return getAppDataFolder().Child( BundleIdentifier.get() + "." + name + ".json" )</SourceLine>
         <SourceLine/>
         <SourceLine/>
         <SourceLine>End Function</SourceLine>
@@ -54,7 +54,16 @@
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
         <SourceLine>Function getAppDataFolder() As FolderItem</SourceLine>
-        <SourceLine>return SpecialFolder.ApplicationData.Child( "com.charlierobin.launcher" )</SourceLine>
+        <SourceLine>var f as FolderItem = SpecialFolder.ApplicationData.Child( BundleIdentifier.get() )</SourceLine>
+        <SourceLine/>
+        <SourceLine>if not f.Exists then</SourceLine>
+        <SourceLine/>
+        <SourceLine>f.CreateFolder()</SourceLine>
+        <SourceLine/>
+        <SourceLine>end if</SourceLine>
+        <SourceLine/>
+        <SourceLine>return f</SourceLine>
+        <SourceLine/>
         <SourceLine/>
         <SourceLine/>
         <SourceLine/>
