@@ -69,12 +69,6 @@
         <SourceLine/>
         <SourceLine/>
         <SourceLine/>
-        <SourceLine/>
-        <SourceLine>// if self.quitOnClose then Quit()</SourceLine>
-        <SourceLine/>
-        <SourceLine/>
-        <SourceLine/>
-        <SourceLine/>
         <SourceLine>End Sub</SourceLine>
       </ItemSource>
     </HookInstance>
@@ -113,10 +107,8 @@
       <PartID>975906815</PartID>
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
-        <SourceLine>Sub Constructor(json as JSONItem, quitOnClose as Boolean = false)</SourceLine>
+        <SourceLine>Sub Constructor(json as JSONItem)</SourceLine>
         <SourceLine>self.json = json</SourceLine>
-        <SourceLine/>
-        <SourceLine>self.quitOnClose = quitOnClose</SourceLine>
         <SourceLine/>
         <SourceLine>super.Constructor()</SourceLine>
         <SourceLine/>
@@ -126,7 +118,7 @@
       <AliasName/>
       <ItemFlags>0</ItemFlags>
       <IsShared>0</IsShared>
-      <ItemParams>json as JSONItem, quitOnClose as Boolean = false</ItemParams>
+      <ItemParams>json as JSONItem</ItemParams>
       <ItemResult/>
     </Method>
     <Method>
@@ -175,21 +167,6 @@
       </ItemSource>
       <TextEncoding>134217984</TextEncoding>
       <ItemDeclaration>json As JSONItem</ItemDeclaration>
-      <ItemFlags>33</ItemFlags>
-      <IsShared>0</IsShared>
-    </Property>
-    <Property>
-      <ItemName>quitOnClose</ItemName>
-      <Compatibility/>
-      <Visible>1</Visible>
-      <PartID>1000740863</PartID>
-      <ItemSource>
-        <TextEncoding>134217984</TextEncoding>
-        <SourceLine>quitOnClose As Boolean</SourceLine>
-        <SourceLine/>
-      </ItemSource>
-      <TextEncoding>134217984</TextEncoding>
-      <ItemDeclaration>quitOnClose As Boolean</ItemDeclaration>
       <ItemFlags>33</ItemFlags>
       <IsShared>0</IsShared>
     </Property>
