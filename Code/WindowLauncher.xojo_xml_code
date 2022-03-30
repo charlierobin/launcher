@@ -18,6 +18,8 @@
         <SourceLine>Sub Open()</SourceLine>
         <SourceLine>self.Title = self.json.Value( "name" )</SourceLine>
         <SourceLine/>
+        <SourceLine>if self.preview = false then</SourceLine>
+        <SourceLine/>
         <SourceLine>var windowRestoreJSON as JSONItem = JSONFiles.load( Globals.getLocalConfigFile( self.Title ) )</SourceLine>
         <SourceLine/>
         <SourceLine>if windowRestoreJSON.HasName( "window_Left" ) then</SourceLine>
@@ -27,6 +29,8 @@
         <SourceLine>self.Top = windowRestoreJSON.Lookup( "window_Top", self.Top )</SourceLine>
         <SourceLine/>
         <SourceLine>self.Width = windowRestoreJSON.Lookup( "window_Width", self.Width )</SourceLine>
+        <SourceLine/>
+        <SourceLine>end if</SourceLine>
         <SourceLine/>
         <SourceLine>end if</SourceLine>
         <SourceLine/>
@@ -46,6 +50,7 @@
         <SourceLine/>
         <SourceLine>self.MinimumHeight = self.Height</SourceLine>
         <SourceLine/>
+        <SourceLine/>
         <SourceLine>End Sub</SourceLine>
       </ItemSource>
     </HookInstance>
@@ -57,6 +62,8 @@
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
         <SourceLine>Sub Close()</SourceLine>
+        <SourceLine>if self.preview then return</SourceLine>
+        <SourceLine/>
         <SourceLine>var windowRestoreJSON as JSONItem = new JSONItem( JSONUtilities.kEmptyObject )</SourceLine>
         <SourceLine/>
         <SourceLine>windowRestoreJSON.Value( "window_Left" ) = self.Left</SourceLine>
@@ -107,8 +114,10 @@
       <PartID>975906815</PartID>
       <ItemSource>
         <TextEncoding>134217984</TextEncoding>
-        <SourceLine>Sub Constructor(json as JSONItem)</SourceLine>
+        <SourceLine>Sub Constructor(json as JSONItem, preview as Boolean = false)</SourceLine>
         <SourceLine>self.json = json</SourceLine>
+        <SourceLine/>
+        <SourceLine>self.preview = preview</SourceLine>
         <SourceLine/>
         <SourceLine>super.Constructor()</SourceLine>
         <SourceLine/>
@@ -118,27 +127,8 @@
       <AliasName/>
       <ItemFlags>0</ItemFlags>
       <IsShared>0</IsShared>
-      <ItemParams>json as JSONItem</ItemParams>
+      <ItemParams>json as JSONItem, preview as Boolean = false</ItemParams>
       <ItemResult/>
-    </Method>
-    <Method>
-      <ItemName>matches</ItemName>
-      <Compatibility/>
-      <Visible>1</Visible>
-      <PartID>498182143</PartID>
-      <ItemSource>
-        <TextEncoding>134217984</TextEncoding>
-        <SourceLine>Function matches(json as JSONItem) As Boolean</SourceLine>
-        <SourceLine>return json.Value( "name" ) = self.Title</SourceLine>
-        <SourceLine/>
-        <SourceLine>End Function</SourceLine>
-      </ItemSource>
-      <TextEncoding>134217984</TextEncoding>
-      <AliasName/>
-      <ItemFlags>0</ItemFlags>
-      <IsShared>0</IsShared>
-      <ItemParams>json as JSONItem</ItemParams>
-      <ItemResult>Boolean</ItemResult>
     </Method>
     <Property>
       <ItemName>buttons()</ItemName>
@@ -167,6 +157,21 @@
       </ItemSource>
       <TextEncoding>134217984</TextEncoding>
       <ItemDeclaration>json As JSONItem</ItemDeclaration>
+      <ItemFlags>33</ItemFlags>
+      <IsShared>0</IsShared>
+    </Property>
+    <Property>
+      <ItemName>preview</ItemName>
+      <Compatibility/>
+      <Visible>1</Visible>
+      <PartID>1783537663</PartID>
+      <ItemSource>
+        <TextEncoding>134217984</TextEncoding>
+        <SourceLine>preview As Boolean</SourceLine>
+        <SourceLine/>
+      </ItemSource>
+      <TextEncoding>134217984</TextEncoding>
+      <ItemDeclaration>preview As Boolean</ItemDeclaration>
       <ItemFlags>33</ItemFlags>
       <IsShared>0</IsShared>
     </Property>
