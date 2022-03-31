@@ -15,3 +15,21 @@ I've not tested it on more modern versions of macOS, and I suspect it wouldn't w
 
 (Remember when Apple advertising mocked Microsoft for the number of times security dialog boxes would pop up in Windows? Bet that doesn't seem as funny now...)
 
+![Main window](graphics/screenshots/main.png)
+
+![Edit category window](graphics/screenshots/category.png)
+
+![Edit item window](graphics/screenshots/item.png)
+
+The build process creates apps with custom icons:
+
+![Apps](graphics/screenshots/apps.png)
+
+Launching gives you a floating window with whatever items you configured:
+
+![Floating window](graphics/screenshots/window.png)
+
+When I first put this together buttons could launch apps, documents, and do a load of command line/Terminal stuff. After a few years I realised that I never used the Terminal options, so I stripped them all out.
+
+A button can launch an app, or it can be a mailto: or http:// (or https://) for initialising a new email in Mail or going to a website in Safari.
+
