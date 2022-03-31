@@ -1,4 +1,4 @@
 # Let’s Do Launch
 ## A simple launcher app for OSX.
 
-![Let’s Do Launch](graphics/icon.png)
+<img src="graphics/icon.pn" width="200">
