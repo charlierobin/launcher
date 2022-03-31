@@ -20,9 +20,9 @@
         <SourceLine/>
         <SourceLine>if self.preview = false then</SourceLine>
         <SourceLine/>
-        <SourceLine>var windowRestoreJSON as JSONItem = JSONFiles.load( Globals.getLocalConfigFile( self.Title ) )</SourceLine>
+        <SourceLine>var windowRestoreJSON as JSONItem = JSONFiles.load( App.getLocalConfigFile( self.Title ) )</SourceLine>
         <SourceLine/>
-        <SourceLine>if windowRestoreJSON.HasName( "window_Left" ) then</SourceLine>
+        <SourceLine>if windowRestoreJSON &lt;&gt; nil and windowRestoreJSON.HasName( "window_Left" ) then</SourceLine>
         <SourceLine/>
         <SourceLine>self.Left = windowRestoreJSON.Lookup( "window_Left", self.Left )</SourceLine>
         <SourceLine/>
@@ -36,7 +36,7 @@
         <SourceLine/>
         <SourceLine>var items as JSONItem = self.json.Value( "items" )</SourceLine>
         <SourceLine/>
-        <SourceLine>for i as Integer = 0 to items.Count() - 1</SourceLine>
+        <SourceLine>for i as Integer = 0 to items.LastRowIndex()</SourceLine>
         <SourceLine/>
         <SourceLine>var item as JSONItem = items.ChildAt( i )</SourceLine>
         <SourceLine/>
@@ -72,7 +72,7 @@
         <SourceLine/>
         <SourceLine>windowRestoreJSON.Value( "window_Width" ) = self.Width</SourceLine>
         <SourceLine/>
-        <SourceLine>JSONFiles.save( Globals.getLocalConfigFile( self.Title ), windowRestoreJSON )</SourceLine>
+        <SourceLine>JSONFiles.save( App.getLocalConfigFile( self.Title ), windowRestoreJSON )</SourceLine>
         <SourceLine/>
         <SourceLine/>
         <SourceLine/>
