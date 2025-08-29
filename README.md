@@ -60,8 +60,8 @@ It's within this main app that you now configure your launchers. You can have mu
 
 Alternatively, you can just download a disk image with a prebuilt version I've compiled here:
 
-[Let's Do Launch install disk image](https://dl.dropboxusercontent.com/s/wzz0g6qyi0qbeu9/LetsDoLaunch.dmg.zip?dl=0)
+[Let's Do Launch install disk image](https://github.com/charlierobin/launcher/releases/download/v1.0.0/LetsDoLaunch.dmg.zip)
 
-It works on my system, as of today (Thursday 31at March 2022), but who knows what the future will bring.
+It works on my system (Catalina), as of today (Thursday 31st March 2022), but who knows what the future will bring.
 
 
