@@ -1,6 +1,8 @@
 # Let’s Do Launch
 
-Note as of Aug 2025: This is not an app that should be downloaded and used by anyone. At least, not until I’ve had a chance to sort it out.
+Note as of Aug 2025: This is not an app that should be downloaded and used by anyone.
+
+`At least, not until I’ve had a chance to sort it out.`
 
 ## A simple launcher app for macOS/OSX.
 
