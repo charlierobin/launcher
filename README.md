@@ -2,7 +2,11 @@
 
 Note as of Aug 2025: This is not an app that should be downloaded and used by anyone.
 
-`At least, not until I’ve had a chance to sort it out.`
+**At least, not until I’ve had a chance to sort it out.**
+
+But in the meanwhile, I am sorting out the Dropbox link, replacing it with a link to a pre-built release.
+
+But that does not mean you should actually go ahead and use it!
 
 ## A simple launcher app for macOS/OSX.
 
